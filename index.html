@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScamScan – Scam and Phishing Message Checker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">SCAMSCAN <span>/ MESSAGE CHECKER</span></div>
+  <div id="modelChip" class="chip">model…</div>
+</header>
+
+<main>
+  <h1>Scam and Phishing Message Check</h1>
+  <p class="sub">Paste a screenshot of a suspicious message. Results appear automatically.</p>
+
+  <section class="card input-card">
+    <div id="dropZone" class="drop" tabindex="0" role="button" aria-label="Paste or drop a screenshot here">
+      <div class="drop-title">Press <b>Ctrl + V</b> to paste a screenshot</div>
+      <div class="drop-sub">or tap <b>Paste image</b> below, or drag and drop an image here</div>
+      <img id="preview" alt="Pasted screenshot preview" hidden>
+    </div>
+    <div class="btn-row">
+      <button id="pasteBtn" class="btn primary" type="button">Paste image</button>
+      <button id="uploadBtn" class="btn" type="button">Upload image</button>
+      <button id="clearBtn" class="btn ghost" type="button">Clear</button>
+      <input id="fileInput" type="file" accept="image/*" hidden>
+    </div>
+
+    <label for="msgText" class="lbl">Message text <span class="muted">(filled from the screenshot; you can also paste or edit text here)</span></label>
+    <textarea id="msgText" rows="5" placeholder="Paste or type the message here…" spellcheck="false"></textarea>
+    <div id="status" class="status" aria-live="polite">Waiting for a message…</div>
+    <div id="bar" class="bar" hidden><div id="barFill"></div></div>
+  </section>
+
+  <section id="result" class="card result" hidden>
+    <div class="verdict-row">
+      <div id="badge" class="badge">—</div>
+      <div id="risk" class="risk">—</div>
+    </div>
+    <div class="meter"><div id="meterFill"></div></div>
+    <div id="scoreLine" class="scoreline"></div>
+
+    <h2>Message text (flagged phrases highlighted)</h2>
+    <div id="highlighted" class="highlighted"></div>
+
+    <h2>Warning signs detected</h2>
+    <ul id="signs" class="signs"></ul>
+
+    <h2>What you should do</h2>
+    <ul id="advice" class="advice"></ul>
+
+    <details class="how">
+      <summary>How this result was computed</summary>
+      <p id="howText"></p>
+    </details>
+    <p class="disclaimer">This is an initial risk assessment only. It cannot guarantee that a message is safe or fraudulent.</p>
+  </section>
+
+  <p class="privacy">Privacy: the screenshot is read and analyzed inside your browser. Nothing you paste is uploaded to our server or stored.</p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<script src="model.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
